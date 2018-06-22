@@ -19,14 +19,25 @@ int p(int x){
 }
 
 
+int sum(){
+	int s,i;
+	s=0;
+	for(i=0;i<n;i++){
+		s=s+A[i];
+	}
+	return s;
+}
+
+
 int main(){
     int i, lb, ub;
     scanf("%d%d", &n, &k);
-    lb=n/k;
-    ub=(n/k+1)*10000;
     for(i = 0; i < n; i++){
         scanf("%d", &A[i]);
     }
+    int s=sum();
+    lb=s/k+(2*(s%k))/((s%k+1))-1;
+    ub=(n/k+1)*10000;
     while(ub-lb>1){
         int m=(ub+lb)/2;
         if(p(m)) ub=m;

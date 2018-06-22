@@ -15,14 +15,24 @@ int p(int x){
 }
 
 
+int max(){
+    int i,m;
+    m=0;
+    for(i=0;i<n;i++){
+        if(m<A[i]) m=A[i];
+    }
+    return m;
+}
+
+
 int main(){
     int i, lb, ub;
     scanf("%d%d", &n, &k);
-    lb=0;
-    ub=1000000001;
     for(i = 0; i < n; i++){
         scanf("%d", &A[i]);
     }
+    lb=0;
+    ub=max()+1;
     while(ub-lb>1){
         int m=(ub+lb)/2;
         if(p(m)) lb=m;
